@@ -1,0 +1,28 @@
+{
+  "name": "dc-tooling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/app.js",
+  "scripts": {
+    "build:digitalocean": "npm install --production=false && npm run build && npm ci",
+    "start": "tsc -p . && node build/app.js",
+    "build": "tsc -p .",
+    "dev": "nodemon src/app.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.1",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "leaflet": "^1.9.4"
+  },
+  "engines": {
+    "node": "18.17.1"
+  }
+}

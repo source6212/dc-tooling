@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: #121212;
+  margin: 0;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  margin-left: 1em;
+  margin-left: 1em;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  color: #efefef;
+  font-style: italic;
+  font-size: 3rem;
+  margin-top: 0;
+}
+
+h2 {
+  color: white;
+  font-style:normal;
+  font-size: 2srem;
+  margin-bottom: 0;
+}
