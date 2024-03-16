@@ -21,7 +21,8 @@ const baseTitle = 'DC Tooling'
 let underConstruction = false
 
 let routes = [
-  { path: '/', title: 'Home', view: (underConstruction ? 'under_construction' : "home") },
+  { path: '/', title: 'Home', view: "home" },
+  { path: '/under_construction', title: 'Under Construction', view: 'under_construction' },
   { path: '/equipment', title: 'Equipment & Tools', view: 'equipment' },
   { path: '/safety', title: 'Safety', view: 'safety' },
   { path: '/automation', title: 'Automation', view: 'automation' },
