@@ -18,10 +18,10 @@ app.set('strict routing', true);
 
 const baseTitle = 'DC Tooling' 
 
-let underConstruction = false
+let underConstruction = true
 
 let routes = [
-  { path: '/', title: 'Home', view: "home" },
+  { path: '/', title: 'Home', view: (underConstruction ? "under_construction" : "home") },
   { path: '/under_construction', title: 'Under Construction', view: 'under_construction' },
   { path: '/equipment', title: 'Equipment & Tools', view: 'equipment' },
   { path: '/safety', title: 'Safety', view: 'safety' },
