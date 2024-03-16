@@ -22,13 +22,13 @@ let underConstruction = false
 
 let routes = [
   { path: '/', title: 'Home', view: (underConstruction ? "under_construction" : "home") },
-  { path: '/under_construction', title: 'Under Construction', view: 'under_construction' },
-  { path: '/equipment', title: 'Equipment & Tools', view: 'equipment' },
-  { path: '/safety', title: 'Safety', view: 'safety' },
-  { path: '/automation', title: 'Automation', view: 'automation' },
+  // { path: '/under_construction', title: 'Under Construction', view: 'under_construction' },
+  // { path: '/equipment', title: 'Equipment & Tools', view: 'equipment' },
+  // { path: '/safety', title: 'Safety', view: 'safety' },
+  // { path: '/automation', title: 'Automation', view: 'automation' },
   { path: '/contact-us', title: 'Contact Us', view: 'contact-us' },
-  { path: '/about-us', title: 'About Us', view: 'about-us' },
-  { path: '/gallery', title: 'Gallery', view: 'gallery' }
+  // { path: '/about-us', title: 'About Us', view: 'about-us' },
+  // { path: '/gallery', title: 'Gallery', view: 'gallery' }
 ]
 
 
