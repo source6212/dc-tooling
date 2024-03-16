@@ -18,13 +18,13 @@ app.use(express.static('public'))
 
 const baseTitle = 'DC Tooling' 
 
-let underConstruction = true
+let underConstruction = false
 
 let routes = [
   { path: '/', title: 'Home', view: (underConstruction ? 'under_construction' : "home") },
-  { path: '/automation', title: 'Automation', view: 'automation' },
   { path: '/equipment', title: 'Equipment & Tools', view: 'equipment' },
   { path: '/safety', title: 'Safety', view: 'safety' },
+  { path: '/automation', title: 'Automation', view: 'automation' },
   { path: '/contact-us', title: 'Contact Us', view: 'contact-us' },
   { path: '/about-us', title: 'About Us', view: 'about-us' },
   { path: '/gallery', title: 'Gallery', view: 'gallery' }
@@ -33,9 +33,8 @@ let routes = [
 
 for (let route of routes) {
   app.get(route.path, (req, res) => {
-    console.log("route: " + route.view)
-    let fileLocation = path.join(__dirname, '/../public/' + route.view + '.html')
-    console.log("File: " + fileLocation)
+    console.log('Path is: ' + route.path)
+    let fileLocation = path.join(__dirname, '../public/' + route.view + '.html')
     return res.sendFile(fileLocation);
 
     // return res.sendFile(path.join(__dirname, '../public/', route.view));
@@ -44,5 +43,5 @@ for (let route of routes) {
 }
 
 app.listen(port, function() {
-  console.log("Server started at http://localhost:52524/")
+  // console.log("Server started at http://localhost:52524/")
 });
