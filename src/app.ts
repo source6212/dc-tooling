@@ -9,7 +9,7 @@ const port = process.env.PORT || 52524;
 // app.use(express.static('public'))
 
 app.use(express.static('public'))
-
+app.set('strict routing', true);
 
 // nun.configure('public', {
 //   autoescape: true,
@@ -35,6 +35,7 @@ for (let route of routes) {
   app.get(route.path, (req, res) => {
     console.log('Path is: ' + route.path)
     let fileLocation = path.join(__dirname, '../public/' + route.view + '.html')
+    console.log("File location: " + fileLocation)
     return res.sendFile(fileLocation);
 
     // return res.sendFile(path.join(__dirname, '../public/', route.view));
