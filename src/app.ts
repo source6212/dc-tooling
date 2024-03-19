@@ -26,9 +26,10 @@ let routes = [
   // { path: '/equipment', title: 'Equipment & Tools', view: 'equipment' },
   // { path: '/safety', title: 'Safety', view: 'safety' },
   { path: '/automation', title: 'Automation', view: 'automation' },
-  { path: '/contact-us', title: 'Contact Us', view: 'contact-us' },
   // { path: '/about-us', title: 'About Us', view: 'about-us' },
-  { path: '/gallery', title: 'Gallery', view: 'gallery' }
+  { path: '/gallery', title: 'Gallery', view: 'gallery' },
+  { path: '/contact-us', title: 'Contact Us', view: 'contact-us' }
+
 ]
 
 
