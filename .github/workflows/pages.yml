@@ -1,0 +1,76 @@
+
+name: Deploy DC Tooling
+
+on:
+  push:
+    branches:
+      - master
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepare static website
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+
+          source = Path("public")
+          output = Path("_site")
+
+          shutil.copytree(source, output)
+
+          for page in output.glob("*.html"):
+              html = page.read_text(encoding="utf-8")
+
+              # Use root-relative asset paths on dctooling.com.
+              html = html.replace("./assets/", "/assets/")
+              page.write_text(html, encoding="utf-8")
+
+              # Generate the main homepage.
+              if page.stem == "home":
+                  (output / "index.html").write_text(
+                      html, encoding="utf-8"
+                  )
+              else:
+                  # Preserve routes like /gallery and /eoat.
+                  route = output / page.stem
+                  route.mkdir(exist_ok=True)
+                  (route / "index.html").write_text(
+                      html, encoding="utf-8"
+                  )
+
+          (output / ".nojekyll").touch()
+          PY
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+      - name: Deploy website
+        id: deployment
+        uses: actions/deploy-pages@v4
